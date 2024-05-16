@@ -44,9 +44,6 @@ else
     print("Found pet: " .. petId)
 end
 
--- Teleport to a specific location before starting the fusion process
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(669.301819, 16.9711342, 1074.6239)
-
 while _G.autoFuse do
     local args = {
         [1] = {
@@ -55,5 +52,10 @@ while _G.autoFuse do
     }
 
     game:GetService("ReplicatedStorage").Network.FuseMachine_Activate:InvokeServer(unpack(args))
-    task.wait()
-end
+    task.wait(10) -- Wait for 10 seconds
+
+    -- Teleport to the specified location
+    while true do
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(678.197754, 16.5063076, 1082.30078, -0.426381409, 1.24059101e-08, -0.904543459, 4.92848287e-08, 1, -9.51665236e-09, 0.904543459, -4.86379932e-08, -0.426381409)
+        wait(1)
+    end
